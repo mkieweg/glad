@@ -1,6 +1,6 @@
 # Glad - Glossary Add
 
-One thing that annoyed me while writing my thesis was adding all the skeleton stuff to a `.tex`glossary entry. So `glad` was born. A simple command line tool, that generates one glossary entry at a time without the overhead.
+One thing that annoyed me while writing my thesis was adding all the skeleton stuff to a `.tex` glossary entry. So `glad` was born. A simple command line tool, that generates one glossary entry at a time without the overhead.
 
 ```sh
 $ glad "Three Letter Acronym" "This is a description, for those who don't know what's happening"
