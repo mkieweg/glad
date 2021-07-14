@@ -95,7 +95,12 @@ func initConfig() {
 			os.Exit(1)
 		}
 
-		// Search config in home directory with name ".glad" (without extension).
+		dir, err := os.Getwd()
+		if err != nil {
+			log.Error(err)
+		} else {
+			viper.AddConfigPath(dir + "/.glad")
+		}
 		viper.AddConfigPath(home)
 		viper.SetConfigName(".glad")
 	}
@@ -104,7 +109,7 @@ func initConfig() {
 
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
-		fmt.Println("Using config file:", viper.ConfigFileUsed())
+		log.Info("Using config file:", viper.ConfigFileUsed())
 	}
 	viper.SetDefault("glossary-file", "./glossary.tex")
 	log.SetReportCaller(true)
