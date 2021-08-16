@@ -35,6 +35,7 @@ func Add(acronym, full, description string) {
 	}
 	defer f.Close()
 
+	var acronymUpper string
 	if acronym == "" {
 		b := strings.Builder{}
 		full := strings.ReplaceAll(full, "-", " ")
@@ -43,10 +44,14 @@ func Add(acronym, full, description string) {
 			b.WriteByte(w[0])
 		}
 		acronym = b.String()
+		acronymUpper = strings.ToUpper(acronym)
+	} else {
+		acronymUpper = acronym
 	}
+
 	e := Entry{
 		Acronym:      strings.ToLower(acronym),
-		AcronymUpper: strings.ToUpper(acronym),
+		AcronymUpper: acronymUpper,
 		Full:         full,
 		Description:  description,
 	}
